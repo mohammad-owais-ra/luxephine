@@ -1,0 +1,32 @@
+/*
+  Tailwind v4, loaded WITHOUT its Preflight reset.
+  Your original style.css already has its own reset, and Preflight would
+  subtly change buttons, images, headings and form fields — so it is left out
+  to keep the site pixel-identical.
+
+  Layer order: your original CSS sits in "components", so any Tailwind utility
+  you add later (e.g. `p-4`, `text-gold`) will win over it. That is what lets
+  you migrate to Tailwind one piece at a time.
+*/
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./legacy.css" layer(components);
+
+/* Your brand tokens as Tailwind theme values → bg-maroon, text-gold, font-luxe … */
+@theme {
+  --color-maroon: #3b0216;
+  --color-maroon-deep: #240512;
+  --color-maroon-mid: #6b1635;
+  --color-gold: #e8c87e;
+  --color-gold-light: #f0da9a;
+  --color-gold-dark: #c9a95c;
+  --color-gold-hi: #f6e2a9;
+  --color-gold-lo: #9a6b27;
+  --color-cream: #f5f0eb;
+  --font-luxe: "Times New Roman", Times, Georgia, serif;
+}
+
+/* @property must live at the top level (not inside a cascade layer) */
+@property --gx { syntax: "<percentage>"; inherits: true; initial-value: 40%; }
+@property --gy { syntax: "<percentage>"; inherits: true; initial-value: 40%; }
